@@ -45,7 +45,4 @@
 	<!-- 5.启用声明式事务 -->
 	<tx:annotation-driven transaction-manager="txManager" />
 
-	<!-- 6.配置 Annotation 驱动,扫描@Transactional注解的类定义事务 -->
-	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
-
 </beans>
