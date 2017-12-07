@@ -220,26 +220,15 @@
 				</excludes> -->
 				<includes>
 					<include>properties/${package.environment}.properties</include>
+					<include>*.properties</include>
 					<include>xml/*.xml</include>
 				</includes>
 			</resource>
 		</resources>
 		<plugins>
 			
-			<!-- compiler插件 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.0</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-					<encoding>utf-8</encoding>
-				</configuration>
-			</plugin>
-
 			<!-- resource插件 -->
-			<plugin>
+			<!-- <plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>2.6</version>
 				<configuration>
@@ -251,9 +240,8 @@
 						<filter>${basedir}/src/main/resources/properties/${package.environment}.properties</filter>
 					</filters>
 				</configuration>
-			</plugin>
-
-
+			</plugin> -->
+			
 			<!-- jetty插件 -->
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
@@ -274,6 +262,18 @@
 				</configuration>
 			</plugin>
 
+			<!-- compiler插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>utf-8</encoding>
+				</configuration>
+			</plugin>
+			
 			<!-- release插件 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
