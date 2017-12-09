@@ -64,10 +64,14 @@
 	<servlet>
 		<servlet-name>DruidStatView</servlet-name>
 		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
-		<init-param>
-			<param-name>allow</param-name>
-			<param-value>127.0.0.1</param-value>
-		</init-param>
+		  <init-param>
+        <param-name>allow</param-name>
+        <param-value>localhost/192.168.44.128/127.0.0.1</param-value>
+    </init-param>
+    <init-param>
+        <param-name>deny</param-name>
+        <param-value>128.242.127.4</param-value>
+    </init-param>
 		<init-param>
             <param-name>loginUsername</param-name>
             <param-value>admin</param-value>
