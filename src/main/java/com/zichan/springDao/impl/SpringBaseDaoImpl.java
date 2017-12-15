@@ -1,4 +1,4 @@
-package com.zichan.dao.impl;
+package com.zichan.springDao.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.zichan.dao.SpringBaseDao;
+import com.zichan.springDao.SpringBaseDao;
 
 @Repository("springBaseDao")
 public class SpringBaseDaoImpl implements SpringBaseDao {

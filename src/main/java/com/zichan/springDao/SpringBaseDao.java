@@ -1,4 +1,4 @@
-package com.zichan.dao;
+package com.zichan.springDao;
 
 import java.util.List;
 import java.util.Map;
