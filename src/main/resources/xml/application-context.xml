@@ -21,9 +21,9 @@
 	
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"> 
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
- 		<property name="url" value="jdbc:mysql://192.168.44.1:3306/zichan?characterEncoding=utf-8" />
-		<property name="username" value="root" />
-		<property name="password" value="1234" />
+ 		<property name="url" value="${mysql.url}" />
+		<property name="username" value="${mysql.username}" />
+		<property name="password" value="${mysql.password}" />
 	    <property name="filters" value="stat" /> 
 		<property name="initialSize" value="1" />
 		<property name="minIdle" value="5" /> 
