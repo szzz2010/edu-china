@@ -221,20 +221,21 @@
 			<resource>
 				<directory>${basedir}/src/main/resources</directory>
 				<filtering>true</filtering>
-				<!-- <excludes>
+				<!-- <excludes>  过滤不需要的打包文件，在此处设置
 					<exclude>env/*.*</exclude>
 				</excludes> -->
 				<includes>
-					<include>properties/${package.environment}.properties</include>
-					<include>*.properties</include>
-					<include>xml/*.xml</include>
+					<include>properties/${package.environment}.properties</include><!-- 打包 环境级别的 properties -->
+					<include>*.properties</include><!-- 打包 log4j -->
+					<include>xml/*.xml</include><!-- 打包 xml -->
 				</includes>
 			</resource>
 		</resources>
 		<plugins>
 			
 			<!-- resource插件 -->
-			<!-- <plugin>
+			<!-- 加载 需要读取的  resource 文件  写入到 内存中 ，加载到配置文件中使用 -->
+			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>2.6</version>
 				<configuration>
@@ -242,11 +243,11 @@
 					<includeEmptyDirs>true</includeEmptyDirs>
 					<overwrite>true</overwrite>
 					<encoding>UTF-8</encoding>
-					<filters>
+					<filters><!-- 指定读取需要加载的 properties 文件 -->
 						<filter>${basedir}/src/main/resources/properties/${package.environment}.properties</filter>
 					</filters>
 				</configuration>
-			</plugin> -->
+			</plugin>
 			
 			<!-- jetty插件 -->
 			<plugin>

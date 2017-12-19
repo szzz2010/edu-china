@@ -21,12 +21,6 @@ import com.zichan.utils.HttpClientUtil;
  * 
  */  
 
-//@WebAppConfiguration  
-//@TransactionConfiguration(transactionManager = "txManager", defaultRollback = false)  
-//@Transactional  
-//@RunWith(SpringJUnit4ClassRunner.class)  
-//@ContextConfiguration(locations = {"classpath*:xml/application-context.xml","classpath*:xml/application-servlet.xml"}) 
-
 @WebAppConfiguration  
 @Rollback(value=false)
 @Transactional(transactionManager="txManager")

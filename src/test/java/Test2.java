@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -22,10 +23,12 @@ import com.zichan.dao.springJdbc.MysqlSpringJdbcDao;
  */  
 
 
-@TransactionConfiguration(transactionManager = "txManager", defaultRollback = false)  
-@Transactional  
-@RunWith(SpringJUnit4ClassRunner.class)  
-@ContextConfiguration(locations = {"classpath*:xml/application-context.xml","classpath*:xml/application-servlet.xml"}) 
+@WebAppConfiguration  
+@Rollback(value=false)
+@Transactional(transactionManager="txManager")
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath*:xml/application*.xml"}) 
+
 public class Test2 {  
   
     /** 
