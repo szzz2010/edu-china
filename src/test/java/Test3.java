@@ -13,6 +13,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
+import com.zichan.utils.HttpClientUtil;
 
 /** 
  * 测试基类 
@@ -67,8 +68,7 @@ public class Test3 {
 		inParams.put("method", method);
 		inParams.put("timestamp", timestamp);
 		inParams.put("content", content);
-//		return HttpClientUtil.exec(url, "1", "1", inParams);
-		return null;
+		return HttpClientUtil.exec(url, "1", "1", inParams);
 	}
 	
 	
