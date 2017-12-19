@@ -13,7 +13,8 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.zichan.springDao.SpringBaseDao;
+import com.zichan.dao.springJdbc.MysqlSpringJdbcDao;
+
 
   
 /** 
@@ -33,7 +34,7 @@ public class Test2 {
     protected Logger log = LoggerFactory.getLogger(getClass());   
     
    @Autowired 
-   SpringBaseDao springBaseDao;
+   MysqlSpringJdbcDao springBaseDao;
     
     @Test
     public void doTest(){

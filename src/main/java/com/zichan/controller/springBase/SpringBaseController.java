@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.zichan.utils.RequestUtil;
-
 @Controller
 @RequestMapping(value = "/commonController")
 public class SpringBaseController {
@@ -21,8 +19,8 @@ public class SpringBaseController {
 	@RequestMapping(value = "/aaaaa", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView registerSuccess(@RequestBody(required = false) Map<String, Object> params, HttpServletRequest request) {
 		Map<String, String> map = new HashMap<String, String>();
-	RequestUtil.getHeaders(request);
-	RequestUtil.getParameters(request);
+	/*RequestUtil.getHeaders(request);
+	RequestUtil.getParameters(request);*/
 		return new ModelAndView("ssssss", map);
 	}
 	

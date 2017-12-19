@@ -6,14 +6,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
-import com.zichan.utils.HttpClientUtil;
 
 /** 
  * 测试基类 
@@ -21,11 +20,17 @@ import com.zichan.utils.HttpClientUtil;
  * 
  */  
 
+//@WebAppConfiguration  
+//@TransactionConfiguration(transactionManager = "txManager", defaultRollback = false)  
+//@Transactional  
+//@RunWith(SpringJUnit4ClassRunner.class)  
+//@ContextConfiguration(locations = {"classpath*:xml/application-context.xml","classpath*:xml/application-servlet.xml"}) 
+
 @WebAppConfiguration  
-@TransactionConfiguration(transactionManager = "txManager", defaultRollback = false)  
-@Transactional  
-@RunWith(SpringJUnit4ClassRunner.class)  
-@ContextConfiguration(locations = {"classpath*:xml/application-context.xml","classpath*:xml/application-servlet.xml"}) 
+@Rollback(value=false)
+@Transactional(transactionManager="txManager")
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath*:xml/application*.xml"}) 
 
 public class Test3 {
 
@@ -62,7 +67,8 @@ public class Test3 {
 		inParams.put("method", method);
 		inParams.put("timestamp", timestamp);
 		inParams.put("content", content);
-		return HttpClientUtil.exec(url, "1", "1", inParams);
+//		return HttpClientUtil.exec(url, "1", "1", inParams);
+		return null;
 	}
 	
 	

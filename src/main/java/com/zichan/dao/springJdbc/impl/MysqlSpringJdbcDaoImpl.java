@@ -1,7 +1,6 @@
-package com.zichan.springDao.impl;
+package com.zichan.dao.springJdbc.impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -12,10 +11,11 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.zichan.springDao.SpringBaseDao;
+import com.zichan.dao.springJdbc.MysqlSpringJdbcDao;
+import com.zichan.dao.springJdbc.helper.DaoHelper;
 
-@Repository("springBaseDao")
-public class SpringBaseDaoImpl implements SpringBaseDao {
+@Repository("mysqlSpringJdbcDao")
+public class MysqlSpringJdbcDaoImpl implements MysqlSpringJdbcDao {
 
 	@Autowired
 	DruidDataSource dataSource;
@@ -49,8 +49,7 @@ public class SpringBaseDaoImpl implements SpringBaseDao {
 	}
 
 	@Override
-	public int[] batchInsert(String sql, Object[]... args) {
-		List<Object[]> batchArgs = Arrays.asList(args);
+	public int[] batchInsertOrUpdate(String sql,List<Object[]> batchArgs) {
 		return jdbcTemplate().batchUpdate(sql, batchArgs);
 	}
 
@@ -89,8 +88,28 @@ public class SpringBaseDaoImpl implements SpringBaseDao {
 			}
 		}
 		sql.delete(sql.length() - 4,sql.length());
-		System.out.println(sql.toString());
 		return insertOrUpdate(sql.toString(), list.toArray());
 	}
 
+	@Override
+	public Map<String,Object> commonData(Map<String,Object>params){
+		String sql = (String) params.get("sql");
+		String command = (String) params.get("command");
+		Object data = null;
+		if("execute".equals(command)){
+			DaoHelper.getMysqlSpringJdbcDao().runSql(sql);
+		}
+		if("insertOrUpdate".equals(command)){
+			data = DaoHelper.getMysqlSpringJdbcDao().insertOrUpdate(sql);
+		}
+		if("queryForMap".equals(command)){
+			data = DaoHelper.getMysqlSpringJdbcDao().queryForMap(sql);
+		}
+		if("queryForList".equals(command)){
+			data = DaoHelper.getMysqlSpringJdbcDao().queryForList(sql);
+		}
+		params.put("data", data);
+		return params;
+	}
+	
 }
