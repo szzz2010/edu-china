@@ -80,7 +80,7 @@ public class HttpClientUtil {
 			if (resultCode == 200) {
 				return result;
 			} else {
-				throw new Exception("返回结果异常..." + resultCode+",服务器返回:"+result);
+				return "[#对方错误#]" + resultCode+",服务器返回:"+result;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
