@@ -13,20 +13,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/commonController")
+@RequestMapping(value = "/")
 public class SpringBaseController {
 
-	@RequestMapping(value = "/aaaaa", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/aaa", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView registerSuccess(@RequestBody(required = false) Map<String, Object> params, HttpServletRequest request) {
-		Map<String, String> map = new HashMap<String, String>();
-	/*RequestUtil.getHeaders(request);
-	RequestUtil.getParameters(request);*/
-		return new ModelAndView("ssssss", map);
+		params = new HashMap<String,Object>();
+		params.put("hello", "thank you for playing !");
+		return new ModelAndView("index", params);
 	}
 	
-	@RequestMapping(value = "/wwww", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/www", method = { RequestMethod.POST, RequestMethod.GET })
 	public @ResponseBody Map<String,Object> doSomething(@RequestBody(required = false) Map<String, Object> params, HttpServletRequest request) {
+		params = new HashMap<String,Object>();
+		params.put("hello", "thank you for playing !");
 		return params;
 	}
 	
+	@RequestMapping(method = { RequestMethod.POST, RequestMethod.GET })
+	public String toLogin2(@RequestBody(required = false) Map<String, Object> params, HttpServletRequest request) {
+		return "index";
+	}
 }
